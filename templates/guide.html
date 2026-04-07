@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色彩空间深度指南</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-link">色彩空间转换器</a>
+        <a href="/color_space_guide" class="nav-link active">互动式色彩揭秘</a>
+    </div>
+</nav>
+<div class="container" >
+    <header class="guide-header">
+
+    <h1>色彩空间深度指南</h1>
+    <p class="subtitle">从物理底座到屏幕呈现的视觉科学</p>
+
+
+    </header>
+
+    <h2 class="section-title">Part 1. 互动探索：Hex 与视觉呈现</h2>
+    <div class="interactive-tool">
+        <div class="color-preview-circle" id="previewCircle"></div>
+        <div class="tool-input">
+            <label style="font-weight: bold; display: block; margin-bottom: 10px;">选择颜色或输入 Hex：</label>
+            <input type="color" id="colorPicker" value="#3498db" style="width: 70%; height: 120px; cursor: pointer; border: none; border-radius: 4px;">
+            <div id="hexValue" style="margin-top: 15px; font-family: monospace; font-size: 1.2em; font-weight: bold; color: var(--accent);">#3498db</div>
+            <div id="rgbValue" style="color: #7f8c8d;">sRGB: 52, 152, 219</div>
+        </div>
+        <div style="flex: 1; font-size: 0.9em; color: #666;">
+            <p>※ 改变颜色时，注意你在屏幕上看到的其实是 <b>sRGB</b> 渲染后的结果。同样的 Hex 值在 Adobe RGB 显示器上可能会看起来更加深邃。</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Part 2. 常见色彩空间概览</h2>
+    <div class="card-grid">
+        <div class="card">
+            <span class="tag">设备相关</span>
+            <h3>sRGB vs. Adobe RGB</h3>
+            <p><b>sRGB:</b> 互联网标准。色域小但兼容性最强，是网页显示、社交分享的“通用语言”。</p>
+            <p><b>Adobe RGB:</b> 专业标准。色域更广（尤其在青绿区域），是摄影和印刷的首选。</p>
+
+        </div>
+
+        <div class="card">
+            <span class="tag">绝对空间 / 物理底座</span>
+            <h3>CIE XYZ vs. xyY</h3>
+            <p><b>XYZ:</b> 模拟人眼三色响应，是所有空间转换的“桥梁”。</p>
+            <p><b>xyY:</b> 将色度(xy)与亮度(Y)分离。著名的“舌形图”即基于此空间绘制。</p>
+
+        </div>
+
+        <div class="card">
+            <span class="tag">感知均匀</span>
+            <h3>CIE Lab* vs. Luv*</h3>
+            <p><b>Lab:</b> 旨在让坐标距离等于人眼感受到的色差。广泛用于纺织和塑料行业。</p>
+            <p><b>Luv:</b> 在处理“光加色”（如屏幕投影）时比 Lab 更具感知均匀性。</p>
+
+        </div>
+    </div>
+
+    <h2 class="section-title">Part 3. 核心异同点对比</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>特性</th>
+                    <th>sRGB / Adobe RGB</th>
+                    <th>CIE XYZ / xyY</th>
+                    <th>CIE Lab* / Luv*</th>
+                    <th>Hex (十六进制)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>性质</strong></td>
+                    <td>设备相关</td>
+                    <td>物理基础/绝对空间</td>
+                    <td>感知均匀空间</td>
+                    <td>数据表现形式</td>
+                </tr>
+                <tr>
+                    <td><strong>主要用途</strong></td>
+                    <td>屏幕显示、摄影、Web</td>
+                    <td>色彩计算、标准定义</td>
+                    <td>颜色测量、色差计算</td>
+                    <td>网页设计、代码</td>
+                </tr>
+                <tr>
+                    <td><strong>直观程度</strong></td>
+                    <td>较直观</td>
+                    <td>极不直观</td>
+                    <td>中等 (明度+对立色)</td>
+                    <td>仅对程序员直观</td>
+                </tr>
+                <tr>
+                    <td><strong>色域</strong></td>
+                    <td>受限</td>
+                    <td>包含人眼所有可见光</td>
+                    <td>包含人眼所有可见光</td>
+                    <td>取决于所在空间</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="section-title">Part 4. 它们之间的联系</h2>
+    <p>色彩空间不是孤立的，它们通过数学严密地联系在一起：</p>
+    <div class="flow-container">
+        <div class="flow-item">Hex 代码</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">RGB 数值</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">CIE XYZ</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">CIE Lab* (计算色差)</div>
+    </div>
+
+    <div class="summary-box">
+        <h3>💡 总结建议</h3>
+        <ul>
+            <li><strong>网页/UI设计：</strong> 锁死 <b>sRGB</b> 与 <b>Hex</b>，确保用户设备显示一致。</li>
+            <li><strong>摄影/专业印刷：</strong> 使用 <b>Adobe RGB</b> 拍摄，并在 <b>Lab</b> 空间下校对色彩。</li>
+            <li><strong>色彩科研/算法：</strong> 深入研究 <b>XYZ</b>（底层物理）与 <b>Luv</b>（加色模型）。</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>©  3M All Rights Reserved. {{ current_year }}</p>
+    </footer>
+</div>
+
+<script>
+    const colorPicker = document.getElementById('colorPicker');
+    const previewCircle = document.getElementById('previewCircle');
+    const hexValue = document.getElementById('hexValue');
+    const rgbValue = document.getElementById('rgbValue');
+
+    colorPicker.addEventListener('input', (e) => {
+        const hex = e.target.value.toUpperCase();
+        const r = parseInt(hex.slice(1,3), 16);
+        const g = parseInt(hex.slice(3,5), 16);
+        const b = parseInt(hex.slice(5,7), 16);
+
+        previewCircle.style.backgroundColor = hex;
+        hexValue.textContent = hex;
+        rgbValue.textContent = `RGB: ${r}, ${g}, ${b}`;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+/* --- 3M 品牌定义与基础重置 --- */
+:root {
+    --mmm-red: #E6192E;        /* 3M 标准红 */
+    --mmm-red-dark: #B31222;   /* 3M 深红 (用于点击) */
+    --mmm-black: #1F1F1F;      /* 3M 专业黑 */
+    --mmm-gray: #7f8c8d;       /* 辅助灰 */
+    --bg-light: #F4F4F4;       /* 背景淡灰 */
+    --white: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+    line-height: 1.7;
+    color: var(--mmm-black);
+    background-color: var(--bg-light);
+}
+
+/* --- 全局导航栏 (3M 风格) --- */
+.main-nav {
+    width: 100%;
+    background: var(--mmm-black);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-bottom: 3px solid var(--mmm-red);
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+}
+
+.nav-link {
+    color: #bdc3c7;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    padding: 0 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--white);
+    background: rgba(230, 25, 46, 0.1);
+}
+
+.nav-link.active {
+    color: var(--white);
+    background: var(--mmm-red);
+    box-shadow: inset 0 -4px 0 var(--mmm-red-dark);
+}
+
+/* --- 布局容器 --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header .brand-line {
+    width: 40px;
+    height: 4px;
+    background: var(--mmm-red);
+    margin: 0 auto 15px;
+}
+
+/* --- 卡片与组件 --- */
+.card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px; /* 3M 风格通常偏向硬朗，圆角较小 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* 选项卡面板 */
+.tabs { display: flex; border-bottom: 2px solid #eee; margin-bottom: 25px; }
+.tab { padding: 12px 25px; cursor: pointer; font-weight: bold; color: var(--mmm-gray); transition: 0.3s; }
+.tab.active { color: var(--mmm-red); border-bottom: 3px solid var(--mmm-red); }
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* 表单与输入 */
+.input-row { display: flex; gap: 12px; align-items: flex-end; margin-bottom: 25px; justify-content: center; flex-wrap: wrap; }
+.input-group { display: flex; flex-direction: column; }
+.input-group label { font-size: 12px; font-weight: bold; margin-bottom: 5px; color: var(--mmm-gray); }
+input, select { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 95px; font-size: 15px; }
+
+button {
+    padding: 10px 25px;
+    background: var(--mmm-red);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button:hover { background: var(--mmm-red-dark); transform: translateY(-1px); }
+
+/* --- 结果显示与预览 --- */
+.preview-box {
+    height: 80px;
+    border-radius: 4px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    font-weight: bold;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.result-container { background: #f8f9fa; padding: 15px; border-radius: 4px; margin-top: 8px; border: 1px solid #edf0f2; }
+.result-value { font-family: 'Consolas', monospace; font-size: 16px; font-weight: 600; }
+
+/* --- 技术说明 (缩进层次感) --- */
+.tech-info {
+    padding: 25px;
+    background: var(--white);
+    border-radius: 8px;
+    border-left: 5px solid var(--mmm-black);
+    font-size: 13px;
+    margin-top: 30px;
+}
+
+.tech-group { margin-bottom: 15px; }
+.tech-label { font-weight: bold; color: var(--mmm-black); display: block; margin-bottom: 2px; }
+.tech-desc { margin: 0; padding-left: 1.5em; display: block; color: var(--mmm-gray); }
+
+/* --- 脚注 --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--mmm-gray);
+    font-size: 0.9em;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+}
+/* --- 标题增强 --- */
+.section-title {
+    border-left: 5px solid var(--mmm-red);
+    padding-left: 15px;
+    margin: 40px 0 20px;
+    font-size: 1.5rem;
+    color: var(--mmm-black);
+}
+
+/* --- 互动流程图 (Flow Container) --- */
+.flow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.flow-item {
+    background: var(--mmm-black);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex: 1;
+    text-align: center;
+    min-width: 120px;
+}
+
+.flow-arrow {
+    font-size: 20px;
+    color: var(--mmm-red);
+    font-weight: bold;
+}
+
+/* --- 总结建议框 (Summary Box) --- */
+.summary-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    border-top: 4px solid var(--mmm-red);
+    margin-top: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.summary-box h3 {
+    margin-top: 0;
+    color: var(--mmm-red);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.summary-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.summary-box li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.summary-box li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--mmm-red);
+    font-weight: bold;
+}
+
+/* --- 加强版表格容器 (增加阴影和圆角) --- */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: var(--white);
+    border-radius: 12px; /* 更圆润的边角 */
+    margin: 30px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* 柔和阴影让排版显宽松 */
+    border: 1px solid #f0f0f0;
+}
+
+/* --- 表格主体 --- */
+table {
+    width: 100%;
+    border-collapse: separate; /* 推荐使用 separate 配合 spacing 增加空间感 */
+    border-spacing: 0;
+    min-width: 800px; /* 强制拉宽，防止文字堆叠 */
+    table-layout: auto;
+}
+
+/* --- 表头样式 (增加垂直间距) --- */
+th {
+    background-color: var(--mmm-black);
+    color: var(--white);
+    text-align: left;
+    padding: 22px 25px; /* 显著增加内边距 */
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    border-bottom: 4px solid var(--mmm-red);
+}
+
+/* --- 单元格样式 (这是排布宽松的关键) --- */
+td {
+    padding: 25px; /* 增加上下左右的留白 */
+    border-bottom: 1px solid #f0f0f0;
+    color: var(--mmm-black);
+    line-height: 1.8; /* 增加行高，让多行文字不拥挤 */
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+/* 针对第一列“特性”加粗显示，区分维度 */
+td:first-child {
+    font-weight: 700;
+    color: var(--mmm-black);
+    background-color: #fafafa;
+    width: 15%; /* 固定第一列宽度 */
+}
+
+/* --- 交互效果 --- */
+tbody tr:hover td {
+    background-color: #fcfcfc;
+    transition: background 0.3s ease;
+}
+
+/* 最后一个单元格移除底边线 */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+/* 针对指南页面的特定头部样式 */
+.guide-header {
+    text-align: left;
+    margin-bottom: 50px;
+    padding-bottom: 30px; /* 增加底部内边距，为横线留出空间 */
+    border-bottom: 1px solid #e0e0e0; /* 添加淡灰色横线 */
+    max-width: 1000px;
+}
+
+.guide-header .brand-line {
+    width: 45px;
+    height: 5px;
+    background-color: var(--mmm-red);
+    margin: 0 0 15px 0;
+}
+
+.guide-header h1 {
+    font-size: 2.6em;
+    font-weight: 800;
+    color: var(--mmm-black);
+    margin: 0 0 12px 0;
+    letter-spacing: -1px;
+}
+
+.guide-header .subtitle {
+    font-size: 1.15em;
+    color: var(--mmm-gray);
+    margin: 0;
+    font-weight: 500;
+}
